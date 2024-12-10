@@ -29,7 +29,9 @@ public class ArrayPractice {
             char element = chars[i];
             System.out.println(element);
         }
+
         System.out.println("=============================================");
+        
         for (char element : chars) {
             System.out.println(element);
         }

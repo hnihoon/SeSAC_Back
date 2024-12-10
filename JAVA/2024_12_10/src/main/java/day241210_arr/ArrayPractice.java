@@ -31,7 +31,7 @@ public class ArrayPractice {
         }
 
         System.out.println("=============================================");
-        
+
         for (char element : chars) {
             System.out.println(element);
         }

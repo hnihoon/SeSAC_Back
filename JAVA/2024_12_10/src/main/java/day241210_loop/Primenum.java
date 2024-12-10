@@ -16,7 +16,6 @@ public class Primenum {
                 counts += 1;
             }
         }
-
         return counts;
     }
 

@@ -20,3 +20,4 @@ public class Multiple_sum {
         return answer;
     }
 }
+

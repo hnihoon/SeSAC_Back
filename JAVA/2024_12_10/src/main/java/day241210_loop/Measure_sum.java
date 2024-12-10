@@ -17,7 +17,6 @@ public class Measure_sum {
                 }
             }
         }
-
         return sum;
     }
 }

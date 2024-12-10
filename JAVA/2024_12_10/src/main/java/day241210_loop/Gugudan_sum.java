@@ -19,3 +19,4 @@ public class Gugudan_sum {
         return answer;
     }
 }
+

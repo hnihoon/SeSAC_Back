@@ -12,5 +12,4 @@ public class Digits {
         String numstr = Integer.toString(num);
         return numstr.length();
     }
-    
 }

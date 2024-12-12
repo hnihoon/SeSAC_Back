@@ -17,12 +17,13 @@ class Triangle {
     //1)둘레 계산 메서드
     public void length(int a, int b, int c) {
         this.length = a + b + c;
-        System.out.println("둘레: " + this.length);
+        System.out.println("length: " + this.length);
     }
 
     //2)넓이 계산 메서드
     public void area(int base, int height) {
         this.area = 0.5 * base * height; // 넓이 계산
-        System.out.println("넓이: " + this.area);
+        System.out.println("area: " + this.area);
     }
 }
+

@@ -7,110 +7,131 @@ import java.util.Scanner;
 
 public class ManagerPage {
 
-    public static void start(){
+    public static DrinkMachine start(){
+        boolean startInput = false;
         DrinkMachine dma = new DrinkMachine();
-        System.out.println("환영합니다. 관리자님!! 무엇을 도와드릴까요??");
-        boolean mainInput = false;
-        while(!mainInput){
-        System.out.println("사용 가능한 기능 \n1.추가\n2.수정\n3.조회\n4.삭제\n5.입고");
-        Scanner sc = new Scanner(System.in);
-        int num = 1;
 
-        switch(sc.nextInt()){
-            case 1:
-                boolean isValidInput = false;
-                while (!isValidInput) { // 유효한 입력이 들어올 때까지 반복
-                    System.out.println("제품명, 금액을 입력해주세요:");
-                    String drinkName = sc.next();
+        while (!startInput){
+            System.out.println("환영합니다. 관리자님!! 무엇을 도와드릴까요??");
+            boolean mainInput = false;
+            while(!mainInput){
+                System.out.println("사용 가능한 기능 \n1.추가\n2.수정\n3.조회\n4.삭제\n5.입고\n\n작업종료 : esc");
+                Scanner sc = new Scanner(System.in);
 
-                    if (isAlpha(drinkName)) {
-                        dma.setDrinks(new Drink(drinkName, sc.nextInt()));
-                        System.out.println("제품이 추가되었습니다.");
-                        isValidInput = true; // 올바른 입력이면 반복 종료
-                        System.out.println("다른작업을 추가로 진행하시겠습니까?\n1.yes\n2.no");
-                        if(sc.nextInt() == 2){
-                            mainInput = true;
+                String mainswitchInput = sc.next();
+                int num = 1;
+                switch(mainswitchInput){
+                    case "1":
+                            System.out.print("제품명, 금액을 순서대로 입력해주세요\t\t뒤로가기 : esc\n");
+                            String drinkName = sc.next();
+                            if (drinkName.equals("esc")){
+                                break;
+                            }
+                            if (isAlpha(drinkName)) {
+                                dma.setDrinks(new Drink(drinkName, sc.nextInt()));
+                                System.out.println("제품이 추가되었습니다.");
                         }
+                    break;
+
+                    case "2":
                         System.out.println();
-                    } else {
-                        System.out.println("잘못 입력하셨습니다. 다시 시도해주세요.");
-                    }
-                }
-            break;
-            case 2:
-                System.out.println();
-                System.out.println("수정하실 제품을 선택해주세요");
-                for (Drink drink : dma.drinks) {
-                    System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
-                    num++;
-                }
-                int changeNum = sc.nextInt();
+                        System.out.println("수정하실 제품을 선택해주세요\t\t뒤로가기 : esc");
+                        for (Drink drink : dma.drinks) {
+                            System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
+                            num++;
+                        }
+                        String changeNum = sc.next();
+                        if (changeNum.equals("esc")){
+                            break;
+                        }
 
-                System.out.println("제품명을 변경하시겠습니까??\n1.yes\n2.no");
-                int changeCheckNum = sc.nextInt();
+                        System.out.print("제품명을 변경하시겠습니까??\t\t뒤로가기 : esc\n1.yes\n2.no\n");
+                        String changeCheckNum = sc.next();
 
-                if(changeCheckNum == 1){
-                    dma.drinks.get(changeNum-1).setDrinkName(sc.next());
-                    changeNum = 0;
-                }
-                System.out.println("제품 가격을 변경하시겠습니까??\n1.yes\n2.no");
-                changeCheckNum = sc.nextInt();
+                        switch(changeCheckNum){
+                            case "1":
+                                System.out.print("변경하실 제품명을 작성해주세요 : ");
+                                dma.drinks.get(Integer.parseInt(changeNum)-1).setDrinkName(sc.next());
+                            break;
 
-                if(changeCheckNum == 1){
-                    dma.drinks.get(changeNum).setDrinkPrice(sc.nextInt());
-                }
-                System.out.println("제품 정보가 변경되었습니다.");
-                System.out.println();
-            break;
+                            case "esc","2":
+                                break;
+                        }
+                        System.out.print("제품 가격을 변경하시겠습니까??\t\t뒤로가기 : esc\n1.yes\n2.no\n");
+                        changeCheckNum = sc.next();
 
-            case 3:
-                System.out.println();
-                boolean lookUpInput = false;
-                while (!lookUpInput){
-                for (Drink drink : dma.drinks) {
-                    System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
-                    num++;
-                    }
-                    System.out.println();
-                    System.out.println("뒤로가기 : esc");
-                    if(sc.next().equals("esc")){
-                        lookUpInput = true;
+                        switch(changeCheckNum){
+                            case "1":
+                                System.out.print("변경하실 금액을 작성해주세요 : ");
+                                dma.drinks.get(Integer.parseInt(changeNum)-1).setDrinkPrice(sc.nextInt());
+                                break;
+
+                            case "esc","2":
+                                break;
+                        }
+                        System.out.println("제품 정보가 변경되었습니다.");
                         System.out.println();
-                    } else {
-                        System.out.println("잘못 입력하셨습니다.");
+                    break;
+
+                    case "3":
+                        boolean valueInput_3 = true;
+                        while (valueInput_3){
+                            for (Drink drink : dma.drinks) {
+                                System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
+                                num++;
+                            }
+                            System.out.println();
+                            System.out.println("뒤로가기 : esc");
+                            if(sc.next().equals("esc")){
+                                System.out.println();
+                                break;
+                            } else {
+                                System.out.print("잘못 입력하셨습니다.");
+                                num = 1;
+                            }
+                        }
+                        break;
+                    case "4":
                         System.out.println();
-                    }
-                }
-            break;
+                        System.out.println("삭제하실 제품을 선택해주세요\t\t뒤로가기 : esc");
+                        for (Drink drink : dma.drinks) {
+                            System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
+                            num++;
+                        }
+                        String deleteNum = sc.next();
+                        if (deleteNum.equals("esc")){
+                            break;
+                        }
+                        dma.drinks.remove(Integer.parseInt(deleteNum)-1);
+                        System.out.println("삭제가 완료되었습니다.");
+                    break;
 
-            case 4:
-                System.out.println();
-                System.out.println("삭제하실 제품을 선택해주세요");
-                for (Drink drink : dma.drinks) {
-                    System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
-                    num++;
-                }
-                int deleteNum = sc.nextInt();
-                dma.drinks.remove(deleteNum-1);
-                System.out.println("삭제가 완료되었습니다.");
-            break;
+                    case "5":
+                        System.out.println();
+                        System.out.println("입고하실 제품을 선택해주세요\t\t뒤로가기 : esc");
+                        String storeEsc = sc.next();
+                        if (storeEsc.equals("esc")){
+                            break;
+                        }
+                        for (Drink drink : dma.drinks) {
+                            System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
+                            num++;
+                        }
+                        int storeNum = sc.nextInt();
+                        System.out.println();
+                        System.out.println("입고하실 수량을 작성해주세요");
+                        dma.drinks.get(storeNum-1).setDrinkQuantity(sc.nextInt());
+                        System.out.println("입고가 완료되었습니다.");
+                    break;
 
-            case 5:
-                System.out.println();
-                System.out.println("입고하실 제품을 선택해주세요");
-                for (Drink drink : dma.drinks) {
-                    System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
-                    num++;
+                    case "esc":
+                        startInput = true;
+                        mainInput = true;
+                        break;
                 }
-                int storeNum = sc.nextInt();
-                System.out.println();
-                System.out.println("입고하실 수량을 작성해주세요");
-                dma.drinks.get(storeNum-1).setDrinkQuantity(sc.nextInt());
-                System.out.println("입고가 완료되었습니다.");
-            break;
+            }
         }
-    }
-
+    return dma;
 }
     public static boolean isAlpha(String str) {
         return str != null && str.matches("[a-zA-Z가-힣]+");

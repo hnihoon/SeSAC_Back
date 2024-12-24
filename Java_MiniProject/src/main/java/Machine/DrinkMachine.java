@@ -16,5 +16,4 @@ public class DrinkMachine {
         drinks.add(drink);
     }
 
-
 }

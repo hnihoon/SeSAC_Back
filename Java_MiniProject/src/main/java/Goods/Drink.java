@@ -10,11 +10,6 @@ public class Drink {
         this.drinkPrice = drinkPrice;
     }
 
-    public void drinkReceiveGoods(int drink){
-        setDrinkQuantity(drink);
-        System.out.println("보유수량 : " + getDrinkQuantity());
-    }
-
     public String getDrinkName() {
         return drinkName;
     }

@@ -1,19 +1,24 @@
 package User;
 
 public class User {
-    private int money;
+    private int cashmoney;
+    private int cardmoney;
     private String payment;
 
-    public User(int money) {
-        this.money = money;
+    public int getCashmoney() {
+        return cashmoney;
     }
 
-    public int getMoney() {
-        return money;
+    public void setCashmoney(int cashmoney) {
+        this.cashmoney = cashmoney;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public int getCardmoney() {
+        return cardmoney;
+    }
+
+    public void setCardmoney(int cardmoney) {
+        this.cardmoney = cardmoney;
     }
 
     public String getPayment() {

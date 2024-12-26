@@ -7,14 +7,15 @@ import java.util.Scanner;
 
 public class ManagerPage {
 
-    public static DrinkMachine start(){
+    public static DrinkMachine start(DrinkMachine dma){
         boolean startInput = false;
-        DrinkMachine dma = new DrinkMachine();
 
         while (!startInput){
+            System.out.println();
             System.out.println("환영합니다. 관리자님!! 무엇을 도와드릴까요??");
             boolean mainInput = false;
             while(!mainInput){
+                System.out.println();
                 System.out.println("사용 가능한 기능 \n1.추가\n2.수정\n3.조회\n4.삭제\n5.입고\n\n작업종료 : esc");
                 Scanner sc = new Scanner(System.in);
 
@@ -22,6 +23,7 @@ public class ManagerPage {
                 int num = 1;
                 switch(mainswitchInput){
                     case "1":
+                        System.out.println();
                             System.out.print("제품명, 금액을 순서대로 입력해주세요\t\t뒤로가기 : esc\n");
                             String drinkName = sc.next();
                             if (drinkName.equals("esc")){
@@ -109,19 +111,20 @@ public class ManagerPage {
                     case "5":
                         System.out.println();
                         System.out.println("입고하실 제품을 선택해주세요\t\t뒤로가기 : esc");
-                        String storeEsc = sc.next();
-                        if (storeEsc.equals("esc")){
-                            break;
-                        }
+
                         for (Drink drink : dma.drinks) {
                             System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
                             num++;
                         }
-                        int storeNum = sc.nextInt();
+                        String storeNum = sc.next();
+                        if (storeNum.equals("esc")){
+                            break;
+                        }
                         System.out.println();
                         System.out.println("입고하실 수량을 작성해주세요");
-                        dma.drinks.get(storeNum-1).setDrinkQuantity(sc.nextInt());
+                        dma.drinks.get(Integer.parseInt(storeNum)-1).setDrinkQuantity(sc.nextInt());
                         System.out.println("입고가 완료되었습니다.");
+                        System.out.println();
                     break;
 
                     case "esc":

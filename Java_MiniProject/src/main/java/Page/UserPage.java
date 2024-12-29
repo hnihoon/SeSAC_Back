@@ -46,6 +46,7 @@ public class UserPage {
                 DrinkQuantity += drink.getDrinkQuantity();
                 if (cashTotal >= drink.getDrinkPrice()){
                     System.out.println(num +"." + drink.getDrinkName() + " (제고 : " + drink.getDrinkQuantity() + ")");
+                    num++;
                 }
             }
 
@@ -136,7 +137,7 @@ public class UserPage {
         cardNum = sc.nextInt();
 
         System.out.println();
-        if (cardNum == 1){
+        if (getDrink.getDrinkPrice() <= user.getCardmoney() && cardNum == 1){
             System.out.println(getDrink.getDrinkName() + " 구매가 완료되었습니다!!");
             getDrink.setDrinkQuantity(getDrink.getDrinkQuantity() - 1);
             user.setCardmoney(user.getCardmoney() - getDrink.getDrinkPrice());
@@ -144,6 +145,10 @@ public class UserPage {
             System.out.println("계속 이용하시겠습니까??");
             System.out.print("1.yes\t 2.no\n");
             cardNum = sc.nextInt();
+        } else {
+            System.out.println("잔액이 부족합니다.");
+            System.out.println();
+            break;
         }
             System.out.println();
         if (cardNum == 1){

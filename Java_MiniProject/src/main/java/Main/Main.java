@@ -13,7 +13,7 @@ public class Main {
         User kim = new User();
         DrinkMachine dma = new DrinkMachine();
         kim.setCashmoney(5000);
-        kim.setCardmoney(20000);
+        kim.setCardmoney(2000);
 
         boolean mainInput = false;
 
@@ -30,7 +30,7 @@ public class Main {
                 case 1234: // 관리자모드
                     dma = ManagerPage.start(dma);
                     break;
-                case 10:
+                case 10: // 작업종료
                     mainInput = true;
                     break;
             }

@@ -11,4 +11,6 @@ public class Manager {
     public void setPassword(int password) {
         this.Password = password;
     }
+
+    
 }

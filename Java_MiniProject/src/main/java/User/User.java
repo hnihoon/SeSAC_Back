@@ -3,7 +3,6 @@ package User;
 public class User {
     private int cashmoney;
     private int cardmoney;
-    private String payment;
 
     public int getCashmoney() {
         return cashmoney;
@@ -21,11 +20,4 @@ public class User {
         this.cardmoney = cardmoney;
     }
 
-    public String getPayment() {
-        return payment;
-    }
-
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
 }

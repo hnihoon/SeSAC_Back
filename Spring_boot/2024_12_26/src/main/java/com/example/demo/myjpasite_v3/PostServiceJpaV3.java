@@ -1,4 +1,4 @@
-package com.example.demo.myjpasite_v3;
+package com.example.demo.myjpasitev3;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +11,8 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class PostServiceJpaV3 {
     private final PostRepositoryJpaV3 postRepositoryJpaV3;
+
+
 
     @Transactional
     public PostJpaV3 createPost(PostJpaV3 post){
@@ -34,4 +36,8 @@ public class PostServiceJpaV3 {
     public void deletePost(Long id){
         postRepositoryJpaV3.delete(id);
     }
+
+
+
+
 }

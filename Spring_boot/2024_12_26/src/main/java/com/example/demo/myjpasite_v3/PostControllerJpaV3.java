@@ -1,4 +1,4 @@
-package com.example.demo.myjpasite_v3;
+package com.example.demo.myjpasitev3;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostControllerJpaV3 {
     private final PostServiceJpaV3 postServiceJpaV3;
+
 
     @PostMapping
     public PostJpaV3 createPost(@RequestBody PostJpaV3 newPost){

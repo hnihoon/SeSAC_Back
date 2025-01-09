@@ -91,7 +91,13 @@ public class PostController {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsByIdWithCommentAndTag(id)
         ));
+    }
 
+    @GetMapping("/{id}/detail/v2")
+    public ResponseEntity<ApiResponse<PostWithCommentAndTagResponseDtoV2>> readPostsByIdWithCommentAndTagV2(@PathVariable Long id) {
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.readPostsByIdWithCommentAndTagV2(id)
+        ));
     }
 }
 

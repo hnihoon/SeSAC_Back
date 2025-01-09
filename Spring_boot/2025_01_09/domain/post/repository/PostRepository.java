@@ -41,8 +41,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "GROUP BY p")
     List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
 
-    @Query("SELECT p FROM Post p " +
-            "LEFT JOIN FETCH p.comments c " +
+    @Query("SELECT DISTINCT p FROM Post p " +
+            "LEFT JOIN p.comments c " +
             "LEFT JOIN FETCH p.postTags pt " +
             "LEFT JOIN FETCH pt.tag " +
             "WHERE p.id = :id")

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -115,8 +114,7 @@ public class PostService {
 
     public PostWithCommentAndTagResponseDto readPostsByIdWithCommentAndTag(Long id){
 
-//        Post post = postRepository.findByIdWithCommentAndTag(id)
-//                .orElseThrow(() -> new ResourceNotFoundException());
+
 
         Post postWithTag = postRepository.findByIdWithTag(id)
                 .orElseThrow(() -> new ResourceNotFoundException());
@@ -124,6 +122,13 @@ public class PostService {
 
 
         return PostWithCommentAndTagResponseDto.from(postWithTag, comments);
+    }
+
+    public PostWithCommentAndTagResponseDtoV2 readPostsByIdWithCommentAndTagV2(Long id){
+        Post post = postRepository.findByIdWithCommentAndTag(id)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        return PostWithCommentAndTagResponseDtoV2.from(post);
     }
 }
 
